@@ -1,0 +1,31 @@
+DockerFile Commands
+
+FROM language:version
+WORKDIR /app (Virtual Folder in Docker Environment)
+COPY requirements.txt .(Copying files from your local system to docker environment)
+RUN pip install -r requirements.txt (Runs while the image building)
+COPY train.py .
+COPY app.py .
+EXPOSE 5000 (port number used in the docker container)
+CMD ["python","app.py"] (Provide the same commands used to intiate the flask code/ Runs while the container starts)
+
+
+Docker CMD Commands
+
+docker build -t image_name .(Creates a docker image)
+docker image (Shows the images in your docker)
+
+docker run -d -p 5000:5000 name container_name image_name (Running the docker environment while creating a docker container)
+docker ps (Shows the containers in your docker environment)
+
+
+docker build -t image_name .	                                Builds a Docker image using the Dockerfile in the current directory.
+docker images	                                                Displays the Docker images available on your system.
+docker run -d -p 5000:5000 --name container_name image_name	Creates and starts a container using the specified image.
+docker ps	                                                Displays currently running containers.
+docker ps -a	                                                Displays all containers, including stopped containers.
+docker stop container_name	                                Stops a running container.
+docker start container_name	                                Starts an existing stopped container.
+docker logs container_name	                                Displays the container's application logs.
+docker rm container_name	                                Removes a stopped container.
+docker rmi image_name	                                        Removes a Docker image, provided no container is using it.
